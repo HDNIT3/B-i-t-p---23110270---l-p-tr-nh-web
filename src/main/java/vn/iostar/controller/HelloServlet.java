@@ -25,13 +25,18 @@ public class HelloServlet extends HttpServlet{
 	    	"";
 	    	//Nhận cookie
 	    	Cookie[] cookie = req.getCookies();
-	    	for (Cookie c: cookie) {
-	    	if(c.getName().equals("username")) {
-	    	name = c.getValue();}}
-	    	if(name.equals("")){
-	    	//chuyển sang trang LoginServlet
-	    	resp.sendRedirect("/bai1/login");
+	    	try {
+	    		for (Cookie c: cookie) {
+	    	    	if(c.getName().equals("username")) {
+	    	    	name = c.getValue();}}
+	    	    	if(name.equals("")){
+	    	    	//chuyển sang trang LoginServlet
+	    	    	resp.sendRedirect("index.html");
+	    	    	}
+	    	} catch (Exception e)  {
+	    		resp.sendRedirect("index.html");
 	    	}
+	    
 	    	//hiển thị lên trang bằng đối tượng PrintWriter()
 	    	printWriter.println("Xin chao " + name);
     }

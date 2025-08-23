@@ -30,10 +30,10 @@ public class LoginServlet extends HttpServlet{
 		//thêm cookie vào response
 		resp.addCookie(cookie);
 		//chuyển sang trang HelloServlet
-		resp.sendRedirect("/bai1/hello");
+		resp.sendRedirect("hello");
 		}else {
 		//chuyển sang trang LoginServlet
-		resp.sendRedirect("/bai1/login");
+		resp.sendRedirect("index.html");
 		}
 	}
 }
