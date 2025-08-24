@@ -27,11 +27,13 @@ public class HelloServlet extends HttpServlet{
 	    	Cookie[] cookie = req.getCookies();
 	    	try {
 	    		for (Cookie c: cookie) {
-	    	    	if(c.getName().equals("username")) {
-	    	    	name = c.getValue();}}
+		    	    	if(c.getName().equals("username")) {
+		    	    		name = c.getValue();
+		    	    	}
+	    	    	}
 	    	    	if(name.equals("")){
-	    	    	//chuyển sang trang LoginServlet
-	    	    	resp.sendRedirect("index.html");
+		    	    	//chuyển sang trang LoginServlet
+		    	    	resp.sendRedirect("index.html");
 	    	    	}
 	    	} catch (Exception e)  {
 	    		resp.sendRedirect("index.html");

@@ -1,4 +1,7 @@
-vn\iostar\controllersession\Logout.class
 vn\iostar\controller\LoginServlet.class
+vn\iostar\controllersession\CreateSession.class
+vn\iostar\controllersession\Logout.class
+vn\iostar\controllersession\Profile.class
+vn\iostar\controllersession\ShowSession.class
 vn\iostar\controllersession\LoginServlet.class
 vn\iostar\controller\HelloServlet.class

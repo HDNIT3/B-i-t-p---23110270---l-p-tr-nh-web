@@ -11,26 +11,29 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @WebServlet(urlPatterns= {"/login1"})
-public class LoginServlet extends HttpServlet{
-	/**
+public class LoginServlet extends HttpServlet {
+    /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String username = req.getParameter("username");
-		String password = req.getParameter("password");
-		PrintWriter out = resp.getWriter();
-		if (username.equals("trung")&& password.equals("123")) {
-		
-		out.print("Chào mừng bạn, " + username);
-		HttpSession session = req.getSession();
-		session.setAttribute("name", username);
-		} else {
-		out.print("Tài khoản hoặc mật khẩu không chính xác");
-		req.getRequestDispatcher("loginsession.html").include(req,
-		resp);
-		}
-	}
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        if (username.equals("trung") && password.equals("123")) {
+            out.print("Chào mừng bạn, " + username);
+            HttpSession session = request.getSession();
+            session.setMaxInactiveInterval(4);
+            session.setAttribute("name", username);
+            response.sendRedirect("profile");
+        } else {
+            out.print("Tài khoản hoặc mật khẩu không chính xác");
+            request.getRequestDispatcher("loginsession.html").include(request, response);
+        }
+        out.close();
+    }
 }
